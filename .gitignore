@@ -1,0 +1,14 @@
+.vs/
+bin/
+obj/
+
+*.user
+*.suo
+*.cache
+*.pdb
+
+TestResults/
+packages/
+
+*.exe
+*.dll
