@@ -6,17 +6,24 @@ using System.Threading.Tasks;
 using System.ServiceModel;
 using Common.Models;
 using Common.Responses;
+using Common.Faults;
+
 
 namespace Common.Contracts
 {
     [ServiceContract]
     public interface IBatteryService
     {
+
         [OperationContract]
+        [FaultContract(typeof(ValidationFault))]
+        [FaultContract(typeof(DataFormatFault))]
         AckResponse StartSession(EisMeta meta);
 
         [OperationContract]
-        AckResponse PushSample(EisMeta sample);
+        [FaultContract(typeof(ValidationFault))]
+        [FaultContract(typeof(DataFormatFault))]
+        AckResponse PushSample(EisSample sample);
 
         [OperationContract]
         AckResponse EndSession();
