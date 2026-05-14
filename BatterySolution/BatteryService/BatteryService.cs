@@ -10,26 +10,41 @@ using Common.Models;
 using Common.Responses;
 using System.ServiceModel;
 using Common.Faults;
-
+using BatteryService.Helpers;
+using System.IO;
 
 namespace BatteryService
 {
     public class BatteryService : IBatteryService
     {
+        private SessionFileWriter fileWriter;
+        private string currentFillePath;
         private int lastRowIndex = -1;
         public AckResponse StartSession(EisMeta meta)
         {
             ValidateMeta(meta);
+
+            string folderPath = $@"Data\{meta.BatteryId}\{meta.TestId}\{meta.SoC}";
+            Directory.CreateDirectory(folderPath);
+
+            currentFillePath = Path.Combine(folderPath,"session.csv");
+            fileWriter = new SessionFileWriter(currentFillePath);
+
             Console.WriteLine("Session started");
 
             return new AckResponse { Sucess = true, 
                 Message =  "Session started successfuly",
-                Status = "IN_PROGRESS"};
+                Status = "IN_PROGRESS"
+            };
         }
 
         public AckResponse PushSample(EisSample sample)
         {
             ValidateSample(sample);
+
+            string line = $"{sample.RowIndex},{sample.FrequencyHz},{sample.R_ohm},{sample.X_ohm},{sample.V},{sample.T_degC},{sample.Range_ohm}";
+            fileWriter.WriteLine(line);
+
             Console.WriteLine($"Recived sample: {sample.RowIndex}");
 
             return new AckResponse
@@ -42,6 +57,9 @@ namespace BatteryService
 
         public AckResponse EndSession()
         {
+            fileWriter?.Dispose();
+            fileWriter = null;
+
             Console.WriteLine("Session completed");
             return new AckResponse
             {
