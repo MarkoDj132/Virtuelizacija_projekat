@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BatteryService", "BatterySe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BatteryHost", "BatteryHost\BatteryHost.csproj", "{29A748DF-D33D-4645-914C-477818EAF3FD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BatteryClient", "BatteryClient\BatteryClient.csproj", "{554B3604-AE6F-4A78-87C5-9E0F95061DF9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{29A748DF-D33D-4645-914C-477818EAF3FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29A748DF-D33D-4645-914C-477818EAF3FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29A748DF-D33D-4645-914C-477818EAF3FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{554B3604-AE6F-4A78-87C5-9E0F95061DF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{554B3604-AE6F-4A78-87C5-9E0F95061DF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{554B3604-AE6F-4A78-87C5-9E0F95061DF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{554B3604-AE6F-4A78-87C5-9E0F95061DF9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

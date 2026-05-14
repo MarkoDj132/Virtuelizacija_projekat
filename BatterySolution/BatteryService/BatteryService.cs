@@ -123,8 +123,15 @@ namespace BatteryService
             if (meta.TotalRows <=0)
             {
                 throw new FaultException<ValidationFault>(
-                    new ValidationFault { Message = "TotalRows must be > 0." });
+                    new ValidationFault { Message = "TotalRows must be > 0." },
+                    new FaultReason("Invalid meta data: TotalRows is not valid."));
             }
+        }
+        public void TestDatase()
+        {
+            var files = System.IO.Directory.GetFiles("BatteryDataset", "*.csv", System.IO.SearchOption.AllDirectories);
+
+            Console.WriteLine($"Found files: {files.Length}");
         }
     }
 }
