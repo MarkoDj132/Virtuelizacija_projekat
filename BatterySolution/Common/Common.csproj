@@ -44,6 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IBatteryService.cs" />
+    <Compile Include="Events\SampleReceivedEventArgs.cs" />
+    <Compile Include="Events\TransferStartedEventArgs.cs" />
+    <Compile Include="Events\WarningEventArgs.cs" />
     <Compile Include="Faults\DataFormatFault.cs" />
     <Compile Include="Faults\ValidationFault.cs" />
     <Compile Include="Models\EisMeta.cs" />
